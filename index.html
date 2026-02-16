@@ -326,16 +326,16 @@
         <section class="section">
             <div class="stats-row">
                 <div class="stat-card">
-                    <div class="stat-value" id="total-pnl">+6.5%</div>
-                    <div class="stat-label">Total P/L</div>
-                </div>
-                <div class="stat-card">
                     <div class="stat-value">3</div>
                     <div class="stat-label">Open Trades</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">BEAR</div>
                     <div class="stat-label">Market</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1.0x</div>
+                    <div class="stat-label">Risk Mult</div>
                 </div>
             </div>
         </section>
@@ -372,13 +372,11 @@
         
         async function updatePrices() {
             try {
-                let totalPnl = 0;
                 for (const sym of Object.keys(entries)) {
                     const res = await fetch(`https://api.bybit.com/v5/market/tickers?category=spot&symbol=${sym}`);
                     const data = await res.json();
                     const price = parseFloat(data.result.list[0].lastPrice);
                     const pnl = ((price - entries[sym]) / entries[sym] * 100);
-                    totalPnl += pnl;
                     const coin = sym.replace('USDT', '').toLowerCase();
                     const el = document.getElementById(coin + '-pnl');
                     if (el) {
@@ -386,8 +384,6 @@
                         el.className = 'pnl ' + (pnl >= 0 ? 'positive' : 'negative');
                     }
                 }
-                const totalEl = document.getElementById('total-pnl');
-                if (totalEl) totalEl.textContent = (totalPnl >= 0 ? '+' : '') + totalPnl.toFixed(1) + '%';
             } catch (e) { console.log('Update failed'); }
         }
         
