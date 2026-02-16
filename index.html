@@ -264,6 +264,24 @@
             color: var(--text-dim);
         }
         
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .gallery img {
+            width: 100%;
+            border-radius: 12px;
+            border: 2px solid var(--primary);
+            transition: transform 0.3s;
+        }
+        
         @media (max-width: 800px) {
             .hero { flex-direction: column; text-align: center; }
             .avatar-wrapper { width: 280px; height: 280px; }
@@ -367,7 +385,16 @@
         <footer>🦁 Built with ❤️ by Leopold</footer>
     </div>
     
-    <script>
+    <section style="max-width: 900px; margin: 0 auto; padding: 0 20px 40px;">
+        <h2 style="color: var(--primary); margin-bottom: 20px;">🎬 Leo Gallery</h2>
+        <div class="gallery">
+            <img src="gallery/king.jpg" alt="King Leo">
+            <img src="gallery/hunt1.jpg" alt="Leo Hunting">
+            <img src="gallery/hunt2.jpg" alt="Leo Running">
+            <img src="gallery/claw1.jpg" alt="Leo Claws">
+        </div>
+    </section>
+</body>
         const entries = { 'TWTUSDT': 0.52, 'ADAUSDT': 0.278, 'IMXUSDT': 0.1648 };
         
         async function updatePrices() {
