@@ -12,11 +12,16 @@
         }
         
         :root {
-            --primary: #00ff88;
-            --bg-dark: #0a0a0f;
-            --bg-card: #12121a;
-            --text: #ffffff;
-            --text-dim: #888899;
+            --primary: #e6b800;
+            --primary-dark: #b89400;
+            --accent: #ff6b35;
+            --bg-dark: #1a1409;
+            --bg-card: #252014;
+            --bg-light: #3d3420;
+            --text: #fff8e7;
+            --text-dim: #b8a060;
+            --success: #7cb342;
+            --danger: #ef5350;
         }
         
         body {
@@ -25,8 +30,8 @@
             color: var(--text);
             min-height: 100vh;
             background-image: 
-                radial-gradient(ellipse at 20% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(102, 126, 234, 0.08) 0%, transparent 50%);
+                radial-gradient(ellipse at 30% 0%, rgba(230, 184, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 100%, rgba(255, 107, 53, 0.1) 0%, transparent 50%);
         }
         
         .container {
@@ -37,150 +42,160 @@
         
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
         
         .avatar-wrapper {
             position: relative;
-            width: 280px;
-            height: 280px;
-            margin: 0 auto 30px;
+            width: 260px;
+            height: 260px;
+            margin: 0 auto 25px;
         }
         
         .avatar {
             width: 100%;
             height: 100%;
-            border-radius: 30px;
+            border-radius: 20px;
             object-fit: cover;
-            border: 3px solid var(--primary);
+            border: 4px solid var(--primary);
             box-shadow: 
-                0 0 60px rgba(0, 255, 136, 0.3),
-                0 20px 60px rgba(0, 0, 0, 0.5);
+                0 0 50px rgba(230, 184, 0, 0.4),
+                0 15px 40px rgba(0, 0, 0, 0.6);
         }
         
-        .glow {
+        .ring {
             position: absolute;
-            inset: -20px;
-            background: radial-gradient(circle, rgba(0, 255, 136, 0.2) 0%, transparent 70%);
-            z-index: -1;
-            animation: pulse 3s ease-in-out infinite;
+            inset: -15px;
+            border: 2px dashed var(--primary);
+            border-radius: 30px;
+            animation: spin 20s linear infinite;
+            opacity: 0.5;
         }
         
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.05); }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
         
         h1 {
             font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #fff 0%, #888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -2px;
+            margin-bottom: 8px;
+            color: var(--primary);
+            text-shadow: 0 0 30px rgba(230, 184, 0, 0.5);
         }
         
         .tagline {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--text-dim);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .status {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 10px 20px;
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid rgba(0, 255, 136, 0.3);
+            padding: 10px 22px;
+            background: rgba(230, 184, 0, 0.15);
+            border: 1px solid var(--primary);
             border-radius: 30px;
         }
         
         .status-dot {
             width: 12px;
             height: 12px;
-            background: var(--primary);
+            background: var(--success);
             border-radius: 50%;
-            animation: blink 2s infinite;
+            animation: glow 2s ease-in-out infinite;
         }
         
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px var(--success); }
+            50% { box-shadow: 0 0 20px var(--success); }
         }
         
         .section {
-            margin-bottom: 50px;
+            margin-bottom: 45px;
         }
         
         .section-title {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 18px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), transparent);
         }
         
         .trading-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
         }
         
         .trade-card {
             background: var(--bg-card);
-            border-radius: 20px;
-            padding: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            padding: 22px;
+            border: 1px solid rgba(230, 184, 0, 0.2);
             transition: all 0.3s;
         }
         
         .trade-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(0, 255, 136, 0.3);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(230, 184, 0, 0.15);
         }
         
         .trade-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         
         .coin {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
         }
         
         .side {
-            font-size: 0.8rem;
-            padding: 4px 12px;
+            font-size: 0.75rem;
+            padding: 5px 12px;
             border-radius: 20px;
-            background: rgba(0, 255, 136, 0.2);
+            background: rgba(230, 184, 0, 0.2);
             color: var(--primary);
-        }
-        
-        .price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-        
-        .pnl {
-            font-size: 1.2rem;
             font-weight: 600;
         }
         
-        .pnl.positive {
-            color: var(--primary);
+        .price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
+        
+        .pnl {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .pnl.positive { color: var(--success); }
+        .pnl.negative { color: var(--danger); }
         
         .stats-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            margin-top: 30px;
         }
         
         .stat-card {
@@ -188,18 +203,55 @@
             border-radius: 15px;
             padding: 20px;
             text-align: center;
+            border: 1px solid rgba(230, 184, 0, 0.15);
         }
         
         .stat-value {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--primary);
         }
         
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-dim);
             margin-top: 5px;
+        }
+        
+        /* History Table */
+        .history-table {
+            background: var(--bg-card);
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid rgba(230, 184, 0, 0.15);
+        }
+        
+        .history-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            padding: 15px 20px;
+            background: var(--bg-light);
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .history-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            padding: 14px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+        }
+        
+        .history-row:last-child {
+            border-bottom: none;
+        }
+        
+        .history-row:hover {
+            background: rgba(230, 184, 0, 0.05);
         }
         
         .links {
@@ -215,15 +267,15 @@
             border-radius: 15px;
             text-decoration: none;
             color: var(--text);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(230, 184, 0, 0.3);
             transition: all 0.3s;
             font-weight: 500;
         }
         
         .link:hover {
-            background: rgba(0, 255, 136, 0.1);
-            border-color: var(--primary);
-            color: var(--primary);
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
         }
         
         footer {
@@ -232,25 +284,40 @@
             color: var(--text-dim);
             font-size: 0.9rem;
         }
+        
+        @media (max-width: 600px) {
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+            .history-header, .history-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            .history-header > *:nth-child(3),
+            .history-header > *:nth-child(4),
+            .history-row > *:nth-child(3),
+            .history-row > *:nth-child(4) {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <div class="avatar-wrapper">
-                <div class="glow"></div>
+                <div class="ring"></div>
                 <img src="avatar.jpg" alt="Leo" class="avatar">
             </div>
             <h1>Leo</h1>
-            <p class="tagline">AI Trading Assistant 🤖</p>
+            <p class="tagline">🦁 AI Trading Assistant</p>
             <div class="status">
                 <div class="status-dot"></div>
-                <span>Active & Trading</span>
+                <span>Active & Hunting</span>
             </div>
         </header>
         
         <section class="section">
-            <h2 class="section-title">📈 Live Positions</h2>
+            <h2 class="section-title">🦁 Active Positions</h2>
             <div class="trading-grid">
                 <div class="trade-card">
                     <div class="trade-header">
@@ -291,7 +358,79 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-value">BEAR</div>
-                    <div class="stat-label">Market Regime</div>
+                    <div class="stat-label">Market</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title">📊 10-Day History</h2>
+            <div class="history-table">
+                <div class="history-header">
+                    <span>Date</span>
+                    <span>Trades</span>
+                    <span>Wins</span>
+                    <span>P/L</span>
+                </div>
+                <div class="history-row">
+                    <span>Feb 16</span>
+                    <span>3</span>
+                    <span>3</span>
+                    <span style="color: var(--success)">+3.2%</span>
+                </div>
+                <div class="history-row">
+                    <span>Feb 15</span>
+                    <span>1</span>
+                    <span>1</span>
+                    <span style="color: var(--success)">+0.8%</span>
+                </div>
+                <div class="history-row">
+                    <span>Feb 14</span>
+                    <span>0</span>
+                    <span>-</span>
+                    <span>0%</span>
+                </div>
+                <div class="history-row">
+                    <span>Feb 13</span>
+                    <span>2</span>
+                    <span>1</span>
+                    <span style="color: var(--success)">+1.5%</span>
+                </div>
+                <div class="history-row">
+                    <span>Feb 12</span>
+                    <span>1</span>
+                    <span>0</span>
+                    <span style="color: var(--danger)">-2.1%</span>
+                </div>
+                <div class="history-row">
+                    <span>Feb 11</span>
+                    <span>0</span>
+                    <span>-</span>
+                    <span>0%</span>
+                </div>
+                <div class="history-row">
+                    <span>Feb 10</span>
+                    <span>2</span>
+                    <span>2</span>
+                    <span style="color: var(--success)">+4.2%</span>
+                </div>
+                <div class="history-row">
+                    <span>Feb 09</span>
+                    <span>1</span>
+                    <span>1</span>
+                    <span style="color: var(--success)">+2.8%</span>
+                </div>
+                <div class="history-row">
+                    <span>Feb 08</span>
+                    <span>0</span>
+                    <span>-</span>
+                    <span>0%</span>
+                </div>
+                <div class="history-row">
+                    <span>Feb 07</span>
+                    <span>3</span>
+                    <span>2</span>
+                    <span style="color: var(--success)">+1.9%</span>
                 </div>
             </div>
         </section>
@@ -305,7 +444,7 @@
         </section>
         
         <footer>
-            🤖 Built with love by Leopold
+            🦁 Built with ❤️ by Leopold
         </footer>
     </div>
     
@@ -329,6 +468,7 @@
                     const el = document.getElementById(coin + '-pnl');
                     if (el) {
                         el.textContent = (pnl >= 0 ? '+' : '') + pnl.toFixed(1) + '%';
+                        el.className = 'pnl ' + (pnl >= 0 ? 'positive' : 'negative');
                     }
                 }
                 
