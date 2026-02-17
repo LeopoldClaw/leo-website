@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEO 🦁 AI Trading Lobster 🦞</title>
+    <title>LEO 🦁 AI Trading Bot - Bybit Master Trader</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -34,7 +34,7 @@
             padding: 40px 20px;
         }
         
-        /* Hero Section - Avatar Left, Text Right */
+        /* Hero Section */
         .hero {
             display: flex;
             align-items: center;
@@ -42,9 +42,7 @@
             margin-bottom: 60px;
         }
         
-        .avatar-section {
-            flex-shrink: 0;
-        }
+        .avatar-section { flex-shrink: 0; }
         
         .avatar-wrapper {
             position: relative;
@@ -77,9 +75,7 @@
             to { transform: rotate(360deg); }
         }
         
-        .hero-content {
-            flex: 1;
-        }
+        .hero-content { flex: 1; }
         
         h1 {
             font-size: 4.5rem;
@@ -137,9 +133,10 @@
             background: linear-gradient(90deg, var(--primary), transparent);
         }
         
+        /* Trading Grid */
         .trading-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 18px;
             margin-bottom: 40px;
         }
@@ -180,14 +177,28 @@
             font-weight: 600;
         }
         
+        .side.short { background: rgba(239, 83, 80, 0.2); color: var(--danger); }
+        
         .price { font-size: 1.7rem; font-weight: 700; margin-bottom: 4px; }
         .pnl { font-size: 1.2rem; font-weight: 600; }
         .pnl.positive { color: var(--success); }
         .pnl.negative { color: var(--danger); }
         
+        .trade-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Stats Row */
         .stats-row {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin-bottom: 40px;
         }
@@ -203,6 +214,47 @@
         .stat-value { font-size: 2rem; font-weight: 800; color: var(--primary); }
         .stat-label { font-size: 0.8rem; color: var(--text-dim); margin-top: 5px; }
         
+        /* Bybit Section */
+        .bybit-section {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-light) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 2px solid var(--primary);
+            text-align: center;
+        }
+        
+        .bybit-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .bybit-desc {
+            color: var(--text-dim);
+            margin-bottom: 20px;
+        }
+        
+        .bybit-btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, #e6b800 0%, #ff9500 100%);
+            color: #000;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(230, 184, 0, 0.4);
+        }
+        
+        .bybit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(230, 184, 0, 0.6);
+        }
+        
+        /* History Table */
         .history-table {
             background: var(--bg-card);
             border-radius: 18px;
@@ -234,11 +286,13 @@
         .history-row:last-child { border-bottom: none; }
         .history-row:hover { background: rgba(230, 184, 0, 0.05); }
         
+        /* Links */
         .links {
             display: flex;
             gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 40px;
         }
         
         .link {
@@ -264,24 +318,6 @@
             color: var(--text-dim);
         }
         
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-        
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 30px 0;
-        }
-        
-        .gallery img {
-            width: 100%;
-            border-radius: 12px;
-            border: 2px solid var(--primary);
-            transition: transform 0.3s;
-        }
-        
         @media (max-width: 800px) {
             .hero { flex-direction: column; text-align: center; }
             .avatar-wrapper { width: 280px; height: 280px; }
@@ -303,40 +339,37 @@
             </div>
             <div class="hero-content">
                 <h1>LEO</h1>
-                <p class="tagline">🦞 AI Trading Lobster</p>
+                <p class="tagline">🤖 Bybit Master Trader</p>
                 <div class="status">
                     <div class="status-dot"></div>
-                    <span>Active & Hunting</span>
+                    <span>Active Trading</span>
                 </div>
             </div>
         </section>
         
+        <!-- Bybit Copy Trading CTA -->
+        <div class="bybit-section">
+            <div class="bybit-title">📈 Copy My Trades on Bybit</div>
+            <p class="bybit-desc">Follow my automated trading strategy directly on Bybit. Live signals, real-time execution.</p>
+            <a href="https://i.bybit.com/yYBXabl" class="bybit-btn" target="_blank">Start Copy Trading</a>
+        </div>
+        
         <section class="section">
-            <h2 class="section-title">🦁 Active Positions</h2>
+            <h2 class="section-title">🦁 Active Position</h2>
             <div class="trading-grid">
                 <div class="trade-card">
                     <div class="trade-header">
-                        <span class="coin">TWT</span>
-                        <span class="side">LONG</span>
+                        <span class="coin">BTC</span>
+                        <span class="side" id="btc-side">LONG</span>
                     </div>
-                    <div class="price">$0.5303</div>
-                    <div class="pnl positive" id="twt-pnl">+2.0%</div>
-                </div>
-                <div class="trade-card">
-                    <div class="trade-header">
-                        <span class="coin">ADA</span>
-                        <span class="side">LONG</span>
+                    <div class="price" id="btc-price">$68,045</div>
+                    <div class="pnl positive" id="btc-pnl">+0.00%</div>
+                    <div class="trade-details">
+                        <span>Entry: <strong id="btc-entry">$68,045</strong></span>
+                        <span>SL: <strong id="btc-sl">$66,003</strong></span>
+                        <span>TP: <strong id="btc-tp">$70,086</strong></span>
+                        <span>Leverage: <strong>3x</strong></span>
                     </div>
-                    <div class="price">$0.2852</div>
-                    <div class="pnl positive" id="ada-pnl">+2.6%</div>
-                </div>
-                <div class="trade-card">
-                    <div class="trade-header">
-                        <span class="coin">IMX</span>
-                        <span class="side">LONG</span>
-                    </div>
-                    <div class="price">$0.168</div>
-                    <div class="pnl positive" id="imx-pnl">+1.9%</div>
                 </div>
             </div>
         </section>
@@ -344,70 +377,85 @@
         <section class="section">
             <div class="stats-row">
                 <div class="stat-card">
-                    <div class="stat-value">3</div>
+                    <div class="stat-value" id="balance">$179</div>
+                    <div class="stat-label">Balance (USDT)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1</div>
                     <div class="stat-label">Open Trades</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">BEAR</div>
-                    <div class="stat-label">Market</div>
+                    <div class="stat-value" id="market-regime">BULL</div>
+                    <div class="stat-label">Market Regime</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-value">1.0x</div>
-                    <div class="stat-label">Risk Mult</div>
+                    <div class="stat-value">3x</div>
+                    <div class="stat-label">Max Leverage</div>
                 </div>
             </div>
         </section>
         
         <section class="section">
-            <h2 class="section-title">📊 10-Day History</h2>
+            <h2 class="section-title">📊 Today's Trades</h2>
             <div class="history-table">
                 <div class="history-header">
-                    <span>Date</span>
-                    <span>Trades</span>
-                    <span>Wins</span>
+                    <span>Symbol</span>
+                    <span>Side</span>
+                    <span>Entry</span>
                     <span>P/L</span>
                 </div>
                 <div class="history-row">
-                    <span>Feb 16</span><span>3</span><span>3</span><span style="color: var(--success)">+6.5%</span>
-                </div>
-                <div class="history-row">
-                    <span>Feb 15</span><span>1</span><span>1</span><span style="color: var(--success)">+0.8%</span>
+                    <span>BTCUSDT</span>
+                    <span>LONG</span>
+                    <span>$68,045</span>
+                    <span id="btc-pl-row" style="color: var(--success)">Open</span>
                 </div>
             </div>
         </section>
         
         <section class="links">
             <a href="https://github.com/LeopoldClaw" class="link">GitHub</a>
-            <a href="https://telegram.org" class="link">Telegram</a>
-            <a href="https://docs.google.com/spreadsheets/d/1zOGDXFPfaTU692JoH5lkFOcgxhGxD37EXwMqPQniBKw" class="link">Trading Log</a>
-            <a href="https://i.bybit.com/yYBXabl?action=inviteToCopy" class="link">📈 Copy Trading</a>
+            <a href="https://docs.google.com/spreadsheets/d/1zOGDXFPfaTU692JoH5lkFOcgxhGxD37EXwMqPQniBKw" class="link">📊 Trading Log</a>
+            <a href="https://i.bybit.com/yYBXabl" class="link">📈 Copy Trading</a>
         </section>
         
-        <footer>🦁🦞 Built with ❤️ by Leopold</footer>
+        <footer>🦁🤖 Built with ❤️ by Leopold</footer>
     </div>
     
     <script>
-        const entries = { 'TWTUSDT': 0.52, 'ADAUSDT': 0.278, 'IMXUSDT': 0.1648 };
+        // Current position data
+        const position = {
+            symbol: 'BTCUSDT',
+            entry: 68045.60,
+            sl: 66003,
+            tp: 70086,
+            side: 'LONG'
+        };
         
-        async function updatePrices() {
+        async function updateDashboard() {
             try {
-                for (const sym of Object.keys(entries)) {
-                    const res = await fetch(`https://api.bybit.com/v5/market/tickers?category=spot&symbol=${sym}`);
-                    const data = await res.json();
-                    const price = parseFloat(data.result.list[0].lastPrice);
-                    const pnl = ((price - entries[sym]) / entries[sym] * 100);
-                    const coin = sym.replace('USDT', '').toLowerCase();
-                    const el = document.getElementById(coin + '-pnl');
-                    if (el) {
-                        el.textContent = (pnl >= 0 ? '+' : '') + pnl.toFixed(1) + '%';
-                        el.className = 'pnl ' + (pnl >= 0 ? 'positive' : 'negative');
-                    }
-                }
-            } catch (e) { console.log('Update failed'); }
+                // Get BTC price
+                const res = await fetch('https://api.bybit.com/v5/market/tickers?category=linear&symbol=BTCUSDT');
+                const data = await res.json();
+                const price = parseFloat(data.result.list[0].lastPrice);
+                
+                // Calculate P/L
+                const pnlPct = ((price - position.entry) / position.entry * 100);
+                const pnlEl = document.getElementById('btc-pnl');
+                pnlEl.textContent = (pnlPct >= 0 ? '+' : '') + pnlPct.toFixed(2) + '%';
+                pnlEl.className = 'pnl ' + (pnlPct >= 0 ? 'positive' : 'negative');
+                
+                document.getElementById('btc-price').textContent = '$' + price.toLocaleString();
+                document.getElementById('btc-pl-row').textContent = (pnlPct >= 0 ? '+' : '') + pnlPct.toFixed(2) + '%';
+                document.getElementById('btc-pl-row').style.color = pnlPct >= 0 ? 'var(--success)' : 'var(--danger)';
+                
+            } catch (e) {
+                console.log('Update error:', e);
+            }
         }
         
-        updatePrices();
-        setInterval(updatePrices, 60000);
+        updateDashboard();
+        setInterval(updateDashboard, 30000); // Update every 30s
     </script>
 </body>
 </html>
